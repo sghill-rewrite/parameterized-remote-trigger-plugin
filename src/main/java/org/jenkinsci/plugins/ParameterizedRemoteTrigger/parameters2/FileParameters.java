@@ -3,8 +3,9 @@ package org.jenkinsci.plugins.ParameterizedRemoteTrigger.parameters2;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.stream.Collectors.joining;
 
-import javax.annotation.Nonnull;
 import java.io.BufferedReader;
+
+import edu.umd.cs.findbugs.annotations.NonNull;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Map;
@@ -92,7 +93,7 @@ public class FileParameters extends JobParameters {
 
 	@Symbol("FileParameters")
 	public static class FileParametersDescriptor extends ParametersDescriptor {
-		@Nonnull
+		@NonNull
 		@Override
 		public String getDisplayName() {
 			return "File parameters";

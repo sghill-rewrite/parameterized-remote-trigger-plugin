@@ -13,7 +13,6 @@ import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
 import net.sf.json.util.JSONUtils;
 
-import javax.annotation.Nonnull;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.KeyManager;
@@ -204,7 +203,7 @@ public class HttpHelper {
 	 * @throws IOException
 	 *             if the request failed.
 	 */
-	@Nonnull
+	@NonNull
 	private static JenkinsCrumb getCrumb(BuildContext context, Auth2 overrideAuth, boolean isCacheEnabled)
 			throws IOException {
 		String address = context.effectiveRemoteServer.getAddress();

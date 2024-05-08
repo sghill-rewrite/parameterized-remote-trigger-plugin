@@ -1,12 +1,12 @@
 package org.jenkinsci.plugins.ParameterizedRemoteTrigger.remoteJob;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-
-import javax.annotation.Nonnull;
 
 import hudson.EnvVars;
 import hudson.model.AbstractBuild;
@@ -33,7 +33,7 @@ public class RemoteBuildInfoExporterAction implements EnvironmentContributingAct
         addBuildReferenceSafe(buildRef);
     }
 
-    public static RemoteBuildInfoExporterAction addBuildInfoExporterAction(@Nonnull Run<?, ?> parentBuild, String triggeredProjectName, int buildNumber, URL jobURL, RemoteBuildInfo buildInfo) {
+    public static RemoteBuildInfoExporterAction addBuildInfoExporterAction(@NonNull Run<?, ?> parentBuild, String triggeredProjectName, int buildNumber, URL jobURL, RemoteBuildInfo buildInfo) {
         BuildReference reference = new BuildReference(triggeredProjectName, buildNumber, jobURL, buildInfo);
 
         RemoteBuildInfoExporterAction action;

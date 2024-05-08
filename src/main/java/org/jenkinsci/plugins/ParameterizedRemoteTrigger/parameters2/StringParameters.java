@@ -1,6 +1,7 @@
 package org.jenkinsci.plugins.ParameterizedRemoteTrigger.parameters2;
 
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
+
 import java.util.Map;
 import java.util.Objects;
 
@@ -55,7 +56,7 @@ public class StringParameters extends JobParameters {
 
 	@Symbol("StringParameters")
 	public static class StringParametersDescriptor extends ParametersDescriptor {
-		@Nonnull
+		@NonNull
 		@Override
 		public String getDisplayName() {
 			return "String parameters";

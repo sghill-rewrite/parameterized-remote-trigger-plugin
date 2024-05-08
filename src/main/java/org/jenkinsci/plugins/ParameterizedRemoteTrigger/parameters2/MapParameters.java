@@ -4,7 +4,6 @@ import static java.util.stream.Collectors.toMap;
 
 import edu.umd.cs.findbugs.annotations.NonNull;
 
-import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -75,7 +74,7 @@ public class MapParameters extends JobParameters {
 
 	@Symbol("MapParameters")
 	public static class MapParametersDescriptor extends ParametersDescriptor {
-		@Nonnull
+		@NonNull
 		@Override
 		public String getDisplayName() {
 			return "Map parameters";

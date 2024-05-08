@@ -3,9 +3,9 @@ package org.jenkinsci.plugins.ParameterizedRemoteTrigger.utils;
 import static org.apache.commons.lang.StringUtils.isEmpty;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
+import java.io.UnsupportedEncodingException;
 
 import org.apache.commons.codec.binary.Base64;
 import org.jenkinsci.plugins.ParameterizedRemoteTrigger.BuildContext;
@@ -41,7 +41,7 @@ public class Base64Utils
      *            if there is a failure while replacing token macros, or
      *            if there is a failure while encoding user:password.
      */
-    @Nonnull
+    @NonNull
     public static String generateAuthorizationHeaderValue(String authType, String user, String password,
                 BuildContext context, boolean applyMacro) throws IOException
     {
@@ -56,7 +56,7 @@ public class Base64Utils
         return authTypeKey + " " + encodedTuple;
     }
 
-    @Nonnull
+    @NonNull
     private static String getAuthType(String authType)
     {
         if ("Basic".equalsIgnoreCase(authType)) return "Basic";

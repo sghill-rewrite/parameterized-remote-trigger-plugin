@@ -3,9 +3,9 @@ package org.jenkinsci.plugins.ParameterizedRemoteTrigger.remoteJob;
 import java.io.Serializable;
 import java.net.URL;
 
-import javax.annotation.CheckForNull;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import edu.umd.cs.findbugs.annotations.CheckForNull;
+import edu.umd.cs.findbugs.annotations.NonNull;
+import edu.umd.cs.findbugs.annotations.Nullable;
 
 import hudson.AbortException;
 import hudson.model.Result;
@@ -39,16 +39,16 @@ public class RemoteBuildInfo implements Serializable
     @CheckForNull
     private String queueId;
 
-    @Nonnull
+    @NonNull
     private int buildNumber;
 
     @CheckForNull
     private URL buildURL;
 
-    @Nonnull
+    @NonNull
     private RemoteBuildStatus status;
 
-    @Nonnull
+    @NonNull
     private Result result;
 
 
@@ -63,7 +63,7 @@ public class RemoteBuildInfo implements Serializable
         return queueId;
     }
 
-    @Nonnull
+    @NonNull
     public int getBuildNumber()
     {
         return buildNumber;
@@ -75,13 +75,13 @@ public class RemoteBuildInfo implements Serializable
         return buildURL;
     }
 
-    @Nonnull
+    @NonNull
     public RemoteBuildStatus getStatus()
     {
         return status;
     }
 
-    @Nonnull
+    @NonNull
     public Result getResult()
     {
         return result;
@@ -92,7 +92,7 @@ public class RemoteBuildInfo implements Serializable
         this.status = RemoteBuildStatus.QUEUED;
     }
 
-    public void setBuildData(@Nonnull int buildNumber, @Nullable URL buildURL) throws AbortException
+    public void setBuildData(@NonNull int buildNumber, @Nullable URL buildURL) throws AbortException
     {
         if (buildURL == null) {
             throw new AbortException(String.format("Unexpected remote build status: %s", toString()));
@@ -125,7 +125,7 @@ public class RemoteBuildInfo implements Serializable
         this.result = Result.fromString(result);
     }
 
-    @Nonnull
+    @NonNull
     @Override
     public String toString()
     {

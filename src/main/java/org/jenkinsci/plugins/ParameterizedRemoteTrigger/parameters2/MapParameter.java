@@ -1,6 +1,7 @@
 package org.jenkinsci.plugins.ParameterizedRemoteTrigger.parameters2;
 
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -60,7 +61,7 @@ public class MapParameter extends AbstractDescribableImpl<MapParameter> implemen
 
 	@Symbol("MapParameter")
 	public static class MapParameterDescriptor extends Descriptor<MapParameter> {
-		@Nonnull
+		@NonNull
 		@Override
 		public String getDisplayName() {
 			return "Map parameter";
