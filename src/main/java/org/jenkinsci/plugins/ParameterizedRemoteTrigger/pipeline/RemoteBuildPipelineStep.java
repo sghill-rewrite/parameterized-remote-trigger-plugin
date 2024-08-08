@@ -32,7 +32,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 
 import org.jenkinsci.plugins.ParameterizedRemoteTrigger.BasicBuildContext;
 import org.jenkinsci.plugins.ParameterizedRemoteTrigger.BuildContext;
@@ -299,7 +299,7 @@ public class RemoteBuildPipelineStep extends Step {
 		}
 
 		@Restricted(NoExternalUse.class)
-		@Nonnull
+		@NonNull
 		public ListBoxModel doFillRemoteJenkinsNameItems() {
 			RemoteBuildConfiguration.DescriptorImpl descriptor = Descriptor.findByDescribableClassName(
 					ExtensionList.lookup(RemoteBuildConfiguration.DescriptorImpl.class),

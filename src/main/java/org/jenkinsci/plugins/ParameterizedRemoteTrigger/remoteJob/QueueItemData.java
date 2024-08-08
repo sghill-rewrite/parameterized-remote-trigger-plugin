@@ -3,13 +3,13 @@ package org.jenkinsci.plugins.ParameterizedRemoteTrigger.remoteJob;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import javax.annotation.CheckForNull;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import edu.umd.cs.findbugs.annotations.CheckForNull;
+import edu.umd.cs.findbugs.annotations.NonNull;
+import edu.umd.cs.findbugs.annotations.Nullable;
 
 import org.jenkinsci.plugins.ParameterizedRemoteTrigger.BuildContext;
-
 import net.sf.json.JSONException;
+
 import net.sf.json.JSONObject;
 
 /**
@@ -18,13 +18,13 @@ import net.sf.json.JSONObject;
  */
 public class QueueItemData
 {
-    @Nonnull
+    @NonNull
     private QueueItemStatus status;
 
     @Nullable
     private String why;
 
-    @Nonnull
+    @NonNull
     private int buildNumber;
 
     @Nullable
@@ -71,7 +71,7 @@ public class QueueItemData
         return status == QueueItemStatus.CANCELLED;
     }
 
-    @Nonnull
+    @NonNull
     public QueueItemStatus getStatus() {
         return status;
     }
@@ -81,7 +81,7 @@ public class QueueItemData
         return why;
     }
 
-    @Nonnull
+    @NonNull
     public int getBuildNumber()
     {
         return buildNumber;
@@ -103,7 +103,7 @@ public class QueueItemData
      * @throws MalformedURLException
      *            if there is an error creating the build URL.
      */
-    public void update(@Nonnull BuildContext context, @Nonnull JSONObject queueResponse) throws MalformedURLException
+    public void update(@NonNull BuildContext context, @NonNull JSONObject queueResponse) throws MalformedURLException
     {
         if (queueResponse.getBoolean("blocked")) status = QueueItemStatus.BLOCKED;
         if (queueResponse.getBoolean("buildable")) status = QueueItemStatus.BUILDABLE;
@@ -134,7 +134,7 @@ public class QueueItemData
         }
     }
 
-    private boolean getOptionalBoolean(@Nonnull JSONObject queueResponse, @Nonnull String attribute)
+    private boolean getOptionalBoolean(@NonNull JSONObject queueResponse, @NonNull String attribute)
     {
         if (queueResponse.containsKey(attribute))
             return queueResponse.getBoolean(attribute);

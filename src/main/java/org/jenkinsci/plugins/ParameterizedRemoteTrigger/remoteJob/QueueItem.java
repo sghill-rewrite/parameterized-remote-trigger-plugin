@@ -3,7 +3,7 @@ package org.jenkinsci.plugins.ParameterizedRemoteTrigger.remoteJob;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
+import edu.umd.cs.findbugs.annotations.NonNull;
 
 import hudson.AbortException;
 
@@ -16,14 +16,14 @@ public class QueueItem
 {
     final static private String key = "Location";
 
-    @Nonnull
+    @NonNull
     private final String location;
 
-    @Nonnull
+    @NonNull
     private final String id;
 
 
-    public QueueItem(@Nonnull Map<String,List<String>> header) throws AbortException
+    public QueueItem(@NonNull Map<String,List<String>> header) throws AbortException
     {
         if (!header.containsKey(key))
             throw new AbortException(String.format("Error triggering the remote job. The header of the response has an unexpected format: %n%s", header));
@@ -36,12 +36,12 @@ public class QueueItem
         }
     }
 
-    @Nonnull
+    @NonNull
     public String getLocation() {
         return location;
     }
 
-    @Nonnull
+    @NonNull
     public String getId() {
         return id;
     }

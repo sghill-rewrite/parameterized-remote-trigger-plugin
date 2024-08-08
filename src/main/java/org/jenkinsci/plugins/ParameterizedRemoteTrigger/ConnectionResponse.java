@@ -1,10 +1,11 @@
 package org.jenkinsci.plugins.ParameterizedRemoteTrigger;
 
+import edu.umd.cs.findbugs.annotations.NonNull;
+
 import net.sf.json.JSONObject;
 
-import javax.annotation.CheckForNull;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import edu.umd.cs.findbugs.annotations.CheckForNull;
+import edu.umd.cs.findbugs.annotations.Nullable;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -16,7 +17,7 @@ import java.util.stream.Collectors;
  */
 public class ConnectionResponse
 {
-    @Nonnull
+    @NonNull
     private final Map<String,List<String>> header = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
 
     @Nullable @CheckForNull
@@ -25,11 +26,11 @@ public class ConnectionResponse
     @Nullable @CheckForNull
     private final String rawBody;
 
-    @Nonnull
+    @NonNull
     private final int responseCode;
 
 
-    public ConnectionResponse(@Nonnull Map<String, List<String>> header, @Nullable JSONObject body, @Nonnull int responseCode)
+    public ConnectionResponse(@NonNull Map<String, List<String>> header, @Nullable JSONObject body, @NonNull int responseCode)
     {
         loadHeader(header);
         this.body = body;
@@ -37,7 +38,7 @@ public class ConnectionResponse
         this.responseCode = responseCode;
     }
 
-    public ConnectionResponse(@Nonnull Map<String, List<String>> header, @Nullable String rawBody, @Nonnull int responseCode)
+    public ConnectionResponse(@NonNull Map<String, List<String>> header, @Nullable String rawBody, @NonNull int responseCode)
     {
         loadHeader(header);
         this.body = null;
@@ -45,7 +46,7 @@ public class ConnectionResponse
         this.responseCode = responseCode;
     }
 
-    public ConnectionResponse(@Nonnull Map<String, List<String>> header, @Nonnull int responseCode)
+    public ConnectionResponse(@NonNull Map<String, List<String>> header, @NonNull int responseCode)
     {
         loadHeader(header);
         this.body = null;

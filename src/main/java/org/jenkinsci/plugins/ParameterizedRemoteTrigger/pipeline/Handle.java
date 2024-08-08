@@ -4,16 +4,16 @@ import static org.apache.commons.lang.StringUtils.isEmpty;
 import static org.apache.commons.lang.StringUtils.trimToNull;
 
 import java.io.IOException;
+
 import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.net.URL;
 import java.util.Optional;
 
-import javax.annotation.CheckForNull;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.annotation.ParametersAreNullableByDefault;
+import edu.umd.cs.findbugs.annotations.CheckForNull;
+import edu.umd.cs.findbugs.annotations.NonNull;
+import edu.umd.cs.findbugs.annotations.Nullable;
 
 import org.apache.commons.lang.StringUtils;
 import org.jenkinsci.plugins.ParameterizedRemoteTrigger.BuildContext;
@@ -33,15 +33,14 @@ import net.sf.json.JSONObject;
  * environment variables (like in a Job). This prevents issues e.g. when triggering
  * remote jobs in a parallel pipeline step.
  */
-@ParametersAreNullableByDefault
 public class Handle implements Serializable {
 
     private static final long serialVersionUID = 4418782245518194292L;
 
-    @Nonnull
+    @NonNull
     private final RemoteBuildConfiguration remoteBuildConfiguration;
 
-    @Nonnull
+    @NonNull
     private RemoteBuildInfo buildInfo;
 
     @Nullable
@@ -58,10 +57,10 @@ public class Handle implements Serializable {
     /**
      * The current local Item (Job, Pipeline,...) where this plugin is currently used.
      */
-    @Nonnull
+    @NonNull
     private final String currentItem;
 
-    @Nonnull
+    @NonNull
     private final RemoteJenkinsServer effectiveRemoteServer;
 
     /*
@@ -71,12 +70,12 @@ public class Handle implements Serializable {
      * already finished.
      * TODO: Once we found a way to log to the pipeline log directly we can switch
      */
-    @Nonnull
+    @NonNull
     private String lastLog;
 
 
-    public Handle(@Nonnull RemoteBuildConfiguration remoteBuildConfiguration, @Nonnull RemoteBuildInfo buildInfo, @Nonnull String currentItem,
-        @Nonnull RemoteJenkinsServer effectiveRemoteServer, @Nonnull JSONObject remoteJobMetadata)
+    public Handle(@NonNull RemoteBuildConfiguration remoteBuildConfiguration, @NonNull RemoteBuildInfo buildInfo, @NonNull String currentItem,
+        @NonNull RemoteJenkinsServer effectiveRemoteServer, @NonNull JSONObject remoteJobMetadata)
     {
         this.remoteBuildConfiguration = remoteBuildConfiguration;
         this.buildInfo = buildInfo;
@@ -183,7 +182,7 @@ public class Handle implements Serializable {
      *
      * @return the build number, or 0 if it could not be identified (yet).
      */
-    @Nonnull
+    @NonNull
     @Whitelisted
     public int getBuildNumber() {
         return buildInfo.getBuildNumber();
@@ -194,7 +193,7 @@ public class Handle implements Serializable {
      *
      * @return {@link org.jenkinsci.plugins.ParameterizedRemoteTrigger.remoteJob.RemoteBuildInfo} the build info
      */
-    @Nonnull
+    @NonNull
     @Whitelisted
     public RemoteBuildInfo getBuildInfo() {
         return buildInfo;
@@ -205,7 +204,7 @@ public class Handle implements Serializable {
      *
      * @return {@link org.jenkinsci.plugins.ParameterizedRemoteTrigger.remoteJob.RemoteBuildStatus} the build status
      */
-    @Nonnull
+    @NonNull
     @Whitelisted
     public RemoteBuildStatus getBuildStatus() {
         return buildInfo.getStatus();
@@ -223,7 +222,7 @@ public class Handle implements Serializable {
      * @throws InterruptedException
      *            if any thread has interrupted the current thread.
      */
-    @Nonnull
+    @NonNull
     @Whitelisted
     public RemoteBuildStatus updateBuildStatus() throws IOException, InterruptedException {
         return updateBuildStatus(false);
@@ -241,13 +240,13 @@ public class Handle implements Serializable {
      * @throws InterruptedException
      *            if any thread has interrupted the current thread.
      */
-    @Nonnull
+    @NonNull
     @Whitelisted
     public RemoteBuildStatus updateBuildStatusBlocking() throws IOException, InterruptedException {
         return updateBuildStatus(true);
     }
 
-    @Nonnull
+    @NonNull
     private RemoteBuildStatus updateBuildStatus(boolean blockUntilFinished) throws IOException, InterruptedException {
       //Return if buildStatus exists and is final (does not change anymore)
       if(buildInfo.isFinished()) return buildInfo.getStatus();
@@ -275,7 +274,7 @@ public class Handle implements Serializable {
      *
      * @return {@link hudson.model.Result} the build result
      */
-    @Nonnull
+    @NonNull
     @Whitelisted
     public Result getBuildResult() {
         return buildInfo.getResult();
@@ -288,7 +287,7 @@ public class Handle implements Serializable {
      *
      * @return The latest log entries from the last called method.
      */
-    @Nonnull
+    @NonNull
     @Whitelisted
     public String lastLog() {
         String log = lastLog.trim();
